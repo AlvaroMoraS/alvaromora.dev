@@ -1,0 +1,15 @@
+{
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"contactCTA": {
+		"title": "Interested in working together?",
+		"cta": "Send Me a Message"
+	},
+	"footer": {
+		"text": "Designed & Developed in",
+		"with": "with"
+	}
+}
