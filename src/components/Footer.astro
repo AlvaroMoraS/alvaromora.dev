@@ -1,14 +1,17 @@
 ---
 import Icon from './Icon.astro';
 import { SITE_CONFIG } from '../config/site';
-import { getLocaleFromUrl, useTranslations } from '../i18n';
+
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const currentYear = new Date().getFullYear();
-const { instagram, github, linkedIn, whatsapp } = SITE_CONFIG.social;
+const { instagram, github, linkedIn, whatsapp, telegram } = SITE_CONFIG.social;
 const { name, fullName, email, phone, location, urlLocation } =
 	SITE_CONFIG.personal;
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
+
 ---
 
 <footer>
@@ -27,6 +30,7 @@ const t = useTranslations(locale);
 		<a href={linkedIn} target="_blank"> LinkedIn</a>
 		<a href={instagram} target="_blank"> Instagram</a>
 		<a href={whatsapp} target="_blank"> Whatsapp</a>
+		<a href={telegram} target="_blank"> Telegram</a>
 	</p>
 </footer>
 <style>

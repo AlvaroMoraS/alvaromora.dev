@@ -1,11 +1,13 @@
 ---
-import CallToAction from './CallToAction.astro';
-import Icon from './Icon.astro';
-import { getLocaleFromUrl, useTranslations } from '../i18n';
-import { SITE_CONFIG } from '../config/site';
+import CallToAction from '@/components/CallToAction.astro';
+import Icon from '@/components/Icon.astro';
 
-const locale = getLocaleFromUrl(Astro.url);
-const t = useTranslations(locale);
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+import { SITE_CONFIG } from '@/config/site';
 const { name, fullName, email, phone, location, urlLocation } =
 	SITE_CONFIG.personal;
 ---

@@ -18,7 +18,7 @@ export interface SiteConfig {
 		github: string;
 		linkedIn: string;
 		whatsapp: string;
-        telegram: string;
+		telegram: string;
 	};
 }
 
@@ -44,6 +44,6 @@ export const SITE_CONFIG: SiteConfig = {
 		github: 'https://github.com/alvaromoras',
 		linkedIn: 'https://www.linkedin.com/in/alvaromorasepulveda/',
 		whatsapp: 'https://wa.me/56961401353',
-        telegram: 'https://t.me/alvaromoras'
+		telegram: 'https://t.me/alvaromoras',
 	},
 };

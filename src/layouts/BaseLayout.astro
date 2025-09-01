@@ -1,11 +1,13 @@
 ---
-// Learn about using Astro layouts:
-// https://docs.astro.build/en/core-concepts/layouts/
+import { getCurrentLang } from '@/i18n/utils';
 
-import Footer from '../components/Footer.astro';
-// Component Imports
-import MainHead from '../components/MainHead.astro';
-import Nav from '../components/Nav.astro';
+// Obtener el idioma actual de forma consistente
+const currentLang = getCurrentLang(Astro.currentLocale, Astro.url);
+
+//Componentes
+import Footer from '@/components/Footer.astro';
+import MainHead from '@/components/MainHead.astro';
+import Nav from '@/components/Nav.astro';
 
 interface Props {
 	title?: string | undefined;
@@ -15,13 +17,13 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang={currentLang}>
 	<head>
 		<MainHead title={title} description={description} />
 	</head>
 	<body>
 		<div class="stack backgrounds">
-			<Nav />
+			<Nav currentLang={currentLang} />
 			<slot />
 			<Footer />
 		</div>

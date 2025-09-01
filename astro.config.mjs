@@ -1,14 +1,20 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
-	output: 'server',
+	site: 'https://alvaromora.dev',
 	i18n: {
 		defaultLocale: 'es',
 		locales: ['es', 'en'],
 		routing: {
-			prefixDefaultLocale: false,
-			redirectToDefaultLocale: false,
+			prefixDefaultLocale: true,
+			//redirectToDefaultLocale: true,
 		},
+	},
+
+	vite: {
+		plugins: [tailwindcss()],
 	},
 });

@@ -1,0 +1,20 @@
+---
+import Hero from '@/components/Hero.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { languages, useTranslations } from '@/i18n/utils';
+
+// getStaticPaths para generar rutas estáticas para cada idioma
+export async function getStaticPaths() {
+	return Object.keys(languages).map((lang) => ({
+		params: { lang },
+	}));
+}
+
+// Obtener el idioma actual desde los parámetros de la ruta
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof languages);
+---
+
+<BaseLayout title="Not Found" description="404 Error — this page was not found">
+	<Hero title="Page Not Found" tagline="Not found" />
+</BaseLayout>
