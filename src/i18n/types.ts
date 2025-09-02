@@ -1,7 +1,19 @@
 // Definir la estructura base de todas las traducciones
+export interface TestimonialItem {
+	id: string;
+	name: string;
+	position: string;
+	company: string;
+	content: string;
+	avatar?: string;
+	featured?: boolean;
+	date?: string;
+}
+
 export interface TranslationSchema {
 	nav: {
 		home: string;
+		work: string;
 		about: string;
 		contact: string;
 	};
@@ -21,7 +33,12 @@ export interface TranslationSchema {
         title: string;
         subtitle: string;
         cta: string;
-    }
+    };
+	testimonials: {
+		title: string;
+		subtitle: string;
+		items: TestimonialItem[];
+	};
 }
 
 // Tipo para validar que todas las traducciones cumplan el schema

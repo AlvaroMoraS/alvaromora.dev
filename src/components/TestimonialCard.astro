@@ -1,0 +1,127 @@
+---
+import type { TestimonialItem } from '@/i18n/types';
+
+interface Props {
+	testimonial: TestimonialItem;
+}
+
+const { testimonial } = Astro.props;
+const { name, position, company, content, avatar, featured } = testimonial;
+---
+
+<div class={`testimonial-card ${featured ? 'featured' : ''}`}>
+	<div class="testimonial-content">
+		<blockquote>
+			"{content}"
+		</blockquote>
+	</div>
+	
+	<div class="testimonial-author">
+		{avatar && (
+			<img 
+				src={avatar} 
+				alt={`${name} profile picture`}
+				class="author-avatar"
+				width="48"
+				height="48"
+			/>
+		)}
+		<div class="author-info">
+			<cite class="author-name">{name}</cite>
+			<p class="author-role">
+				{position} at <span class="company">{company}</span>
+			</p>
+		</div>
+	</div>
+</div>
+
+<style>
+	.testimonial-card {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 1.5rem;
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--theme-transition), box-shadow var(--theme-transition);
+	}
+
+	.testimonial-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.testimonial-card.featured {
+		border-color: var(--accent-regular);
+		background: var(--gradient-accent-orange);
+	}
+
+	.testimonial-content {
+		flex: 1;
+	}
+
+	blockquote {
+		margin: 0;
+		font-size: var(--text-md);
+		line-height: 1.5;
+		color: var(--gray-200);
+		font-style: italic;
+	}
+
+	.testimonial-author {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-top: auto;
+	}
+
+	.author-avatar {
+		border-radius: 50%;
+		object-fit: cover;
+		border: 2px solid var(--gray-700);
+	}
+
+	.author-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.author-name {
+		font-weight: 600;
+		font-size: var(--text-sm);
+		color: var(--gray-0);
+		font-style: normal;
+	}
+
+	.author-role {
+		font-size: var(--text-xs);
+		color: var(--gray-400);
+		margin: 0;
+	}
+
+	.company {
+		color: var(--accent-text-over);
+		font-weight: 500;
+	}
+
+	@media (min-width: 50em) {
+		.testimonial-card {
+			padding: 2rem;
+		}
+
+		blockquote {
+			font-size: var(--text-lg);
+		}
+
+		.author-name {
+			font-size: var(--text-md);
+		}
+
+		.author-role {
+			font-size: var(--text-sm);
+		}
+	}
+</style>

@@ -4,6 +4,7 @@ import type { iconPaths } from '@/components/IconPaths';
 import ThemeToggle from '@/components/ThemeToggle.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { SITE_CONFIG } from '../config/site';
+import { useTranslations, getCurrentLang } from '../i18n/utils';
 
 const { name } = SITE_CONFIG.personal;
 const { instagram, github, linkedIn, telegram, whatsapp } = SITE_CONFIG.social;
@@ -13,11 +14,14 @@ interface Props {
 }
 const { currentLang } = Astro.props;
 
+// Obtener las traducciones para el idioma actual
+const t = useTranslations(currentLang as any);
+
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: getRelativeLocaleUrl(currentLang, '/') },
-	{ label: 'Work', href: getRelativeLocaleUrl(currentLang, '/work/') },
-	{ label: 'About', href: getRelativeLocaleUrl(currentLang, '/about/') },
+	{ label: t('nav.home'), href: getRelativeLocaleUrl(currentLang, '/') },
+	{ label: t('nav.work'), href: getRelativeLocaleUrl(currentLang, '/work/') },
+	{ label: t('nav.about'), href: getRelativeLocaleUrl(currentLang, '/about/') },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
@@ -71,7 +75,7 @@ const isCurrentPage = (href: string) => {
 						<a
 							aria-current={isCurrentPage(href) ? 'page' : null}
 							class="link"
-							href={href}
+							href={href} 
 						>
 							{label}
 						</a>
@@ -85,7 +89,7 @@ const isCurrentPage = (href: string) => {
 			<div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
+						<a href={href} class="social" target="_blank">
 							<span class="sr-only">{label}</span>
 							<Icon icon={icon} />
 						</a>
@@ -114,7 +118,7 @@ const isCurrentPage = (href: string) => {
 			<div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
+						<a href={href} class="social" target="_blank">
 							<span class="sr-only">{label}</span>
 							<Icon icon={icon} />
 						</a>
