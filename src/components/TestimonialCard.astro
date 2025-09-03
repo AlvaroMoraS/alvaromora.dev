@@ -29,7 +29,7 @@ const { name, position, company, content, avatar, featured } = testimonial;
 		<div class="author-info">
 			<cite class="author-name">{name}</cite>
 			<p class="author-role">
-				{position} at <span class="company">{company}</span>
+				{position} | <span class="company">{company}</span>
 			</p>
 		</div>
 	</div>
@@ -113,11 +113,15 @@ const { name, position, company, content, avatar, featured } = testimonial;
 		}
 
 		blockquote {
-			font-size: var(--text-lg);
+			font-size: var(--text-md);
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 12;
 		}
 
 		.author-name {
-			font-size: var(--text-md);
+			font-size: var(--text-sm);
 		}
 
 		.author-role {
