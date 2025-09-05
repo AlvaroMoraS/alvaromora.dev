@@ -1,6 +1,8 @@
 ---
-import { getCurrentLang } from '@/i18n/utils';
+import '../styles/global.css';
+// This is the base layout that all pages will use by default.
 
+import { getCurrentLang } from '@/i18n/utils';
 // Obtener el idioma actual de forma consistente
 const currentLang = getCurrentLang(Astro.currentLocale, Astro.url);
 

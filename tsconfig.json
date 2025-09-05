@@ -1,9 +1,9 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist"],
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
 
-	//nos ayudará a importar módulos de forma más sencilla
+  //nos ayudará a importar módulos de forma más sencilla
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
